@@ -1,0 +1,186 @@
+
+
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Cabecera */
+header {
+    background-color: green;
+    color: #fff;
+    padding: 20px 0;
+}
+
+header img {
+    height: 180px;
+    width: 200px;
+}
+
+header h1 {
+    margin: 0;
+    text-align: center;
+}
+
+/* Secciones */
+section {
+    padding: 10px 0;
+}
+
+section h2 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+section p {
+    text-align: center;
+    font-size: 1.1em;
+    line-height: 1.5;
+}
+
+section ul {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+}
+
+section ul li {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+#vehiculos img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+}
+
+/* Formulario de contacto */
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    background-color: #004f8c;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #00375a;
+}
+
+/* Pie de página */
+footer {
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+/* Estilos generales */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4 {
+    color: #32a852;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+footer {
+    text-align: center;
+    padding: 50px;
+    background-color: #f8f8f8;
+}
+
+/* Estilo del sidebar */
+#sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+#sidebar.active {
+    transform: translateX(0);
+}
+
+
+#menuButton {
+    font-size: 30px;
+    color: white;
+    background-color: #007BFF;
+    border: none;
+    
+    position: absolute;
+    top: 1px;
+    left: 2px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+/* Estilos del contenido principal */
+.main-content {
+    margin-left: 290px;
+    padding: 20px;
+}
+
+footer {
+    background-color: #444444;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 900px;
+    font-size: 0.9rem;
+}
+/* Estilo para el footer */
+footer p {
+    color: #333;
+}
+@media (min-width:600px){
+    .main-content{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+@media (min-width: 900px) {
+    .main-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
