@@ -1,30 +1,24 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
-</head>
-<body>
-    <header>
-        <div>
-            <img src="assets/img/logo.png" alt="Logo de la empresa">
-        </div>
-        <h1>Transporte Accesible</h1>
-        <div class="buttons">
-            <a href="registro.html"><button>Registro</button></a>
-        </div>
-    </header>
-    <h1>Iniciar Sesión</h1>
-    <form action="php/login_usuario_be.php" method="post">
-        <label for="email">Correo Electrónico:</label>
-        <input type="text" id="email" name="correo" required>
+<?php
 
-        <label for="password">Contraseña:</label>
-        <input type="password" id="password" name="contrasena" required>
+// 1. Cargar el Autoload de Composer
+require __DIR__ . '/vendor/autoload.php';
 
-        <button type="submit">Iniciar Sesión</button>
-    </form>
-</body>
-</html>
+// 2. Cargar las Variables de Entorno (Usando vlucas/phpdotenv)
+try {
+    // La clase Dotenv está en el namespace Vlucas\Dotenv
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
+} catch (\Exception $e) {
+    // Esto es útil para manejar el caso en que el archivo .env no exista (ej: en producción)
+    // echo "Advertencia: Archivo .env no encontrado. Usando variables de entorno del sistema.";
+}
+
+
+// --- A PARTIR DE AQUÍ, TODAS LAS VARIABLES DEL .env ESTÁN EN EL ENTORNO GLOBAL ---
+
+// 3. Inicializar el Router (Ejemplo)
+use App\Core\Router;
+
+$router = new Router();
+$router->dispatch(); 
+// El Router ejecutará un controlador, que a su vez usará la clase Database.

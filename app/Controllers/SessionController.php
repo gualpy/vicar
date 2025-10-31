@@ -7,6 +7,7 @@ class SessionController
     public function __construct()
     {
         // Constructor code here
+        echo"Constructor";
     }
 
     public function startSession()
