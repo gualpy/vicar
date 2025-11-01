@@ -1,24 +1,40 @@
 <?php
 
-// 1. Cargar el Autoload de Composer
-require __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
+define('BASE_PATH', __DIR__);
 
-// 2. Cargar las Variables de Entorno (Usando vlucas/phpdotenv)
-try {
-    // La clase Dotenv está en el namespace Vlucas\Dotenv
-    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-    $dotenv->load();
-} catch (\Exception $e) {
-    // Esto es útil para manejar el caso en que el archivo .env no exista (ej: en producción)
-    // echo "Advertencia: Archivo .env no encontrado. Usando variables de entorno del sistema.";
+use Dotenv\Dotenv;
+
+// Cargar variables del entorno (.env)
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+// Cargar el archivo de rutas
+$routes = require_once __DIR__ . '/app/Core/Routes.php';
+
+// Obtener método HTTP (GET, POST, etc.)
+$method = $_SERVER['REQUEST_METHOD'];
+
+// Obtener la URI desde el navegador
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+// ELIMINAR el prefijo del subdirectorio (por ejemplo: /vicar)
+$basePath = '/vicar';
+$uri = str_replace($basePath, '', $uri);
+
+// Normalizar URI (si queda vacío, es la raíz)
+if ($uri === '' || $uri === false) {
+    $uri = '/';
 }
 
-
-// --- A PARTIR DE AQUÍ, TODAS LAS VARIABLES DEL .env ESTÁN EN EL ENTORNO GLOBAL ---
-
-// 3. Inicializar el Router (Ejemplo)
-use App\Core\Router;
-
-$router = new Router();
-$router->dispatch(); 
-// El Router ejecutará un controlador, que a su vez usará la clase Database.
+// Buscar la ruta en la tabla
+if (isset($routes[$method][$uri])) {
+    [$controllerClass, $methodName] = $routes[$method][$uri];
+    // Ejecutar controlador y método correspondiente
+    $controller = new $controllerClass();
+    $controller->$methodName();
+} else {
+    // Ruta no encontrada
+    http_response_code(404);
+    echo "<h1>404 - Página no encontrada</h1>";
+}

@@ -2,15 +2,16 @@
 ├── app
 │   ├── Controllers
 │   │   ├── CerrarSesionController.php
-│   │   ├── cerrar_sesion.php
 │   │   ├── LoginController copy.php
 │   │   ├── LoginController.php
-│   │   ├── registro_usuario_be.php
 │   │   ├── SessionController.php
 │   │   └── UsuarioController.php
-│   ├── models
-│   │   └── LoginModel.php
-│   └── routes.php
+│   ├── Core
+│   │   ├── Database.php
+│   │   ├── Routes.php
+│   │   └── Views.php
+│   └── models
+│       └── UsuarioModel.php
 ├── assets
 │   ├── css
 │   │   ├── default.css
@@ -32,7 +33,7 @@
 ├── composer.json
 ├── composer.lock
 ├── config
-│   └── conexion.php
+│   └── settings.php
 ├── directorio.txt
 ├── index.php
 ├── LICENSE
@@ -522,10 +523,11 @@
 └── views
     ├── historial.php
     ├── informacion.php
+    ├── login.php
     ├── menu.php
     ├── pagos.html
     ├── paypal.html
     ├── plataforma.php
     └── transporte.php
 
-93 directories, 435 files
+94 directories, 436 files

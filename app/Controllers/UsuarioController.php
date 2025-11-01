@@ -5,6 +5,9 @@ namespace App\Controllers;
 include 'conexion_be.php';
 class UsuarioController
 {
+    public function home(){
+        include '../views/inicio-sesion.html';
+    }
     public function crud()
     {
         // Implement CRUD logic here
